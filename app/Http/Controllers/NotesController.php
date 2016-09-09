@@ -9,6 +9,8 @@ use App\Card;
 
 class NotesController extends Controller
 {
+	
+
 	public function store(Request $request, Card $card)
 	{
 		//return $request->all();
@@ -16,10 +18,9 @@ class NotesController extends Controller
 
 
 		/*
-		There are three ways to make this happen. The first way is to create a new note object, then set the 
-		*/
+		There are three ways to make this happen. 
 
-		/*
+
 		The first way is to create a new note object, then set the note->body to the request object's note body that was
 		passed in ($request->body). Then, you call the notes function on the card object 
 		(passed into this store function as a parameter), and Eloquently saving the $note object's body as a 
@@ -38,12 +39,35 @@ class NotesController extends Controller
 		// $note = new Note(['body' => $request->body]);
 		// $card->notes()->save($note);
 
-		$card->notes()->create([
-			'body' => $request->body
+
+		/*
+		Finally, take the $card object and using the notes() function then Eloquently create a a body for it by using the 
+		*/
+		// $card->notes()->create([
+		// 	'body' => $request->body
+		// ]);
+
+		$this->validate($request, [
+			'body' => 'required|min:3'
 		]);
 
+		$note = new Note($request->all());
 
+		$card->addNote($note, 1);
 
 		return back();
+	}
+
+	public function edit(Note $note)
+	{
+		return view('notes.edit', compact('note'));
+	}
+
+	public function update(Request $request, Note $note)
+	{
+		
+		$note->update($request->all());
+		return back();
+
 	}
 }
