@@ -13,7 +13,7 @@
 Route::group(['middleware' => ['web']], function(){
 
 	Route::get('begin', function(){
-		
+		return redirect('/');
 	});
 	
 	Route::get('/', 'PagesController@home');

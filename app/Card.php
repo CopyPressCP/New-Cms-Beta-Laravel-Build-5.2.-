@@ -16,4 +16,6 @@ class Card extends Model
     	$note->user_id = $userId;
 		return $this->notes()->save($note);
 	}
+
+
 }
