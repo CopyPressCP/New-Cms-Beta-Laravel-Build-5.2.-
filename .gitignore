@@ -9,3 +9,4 @@ Homestead.json
 .DS_Store
 _ide_helper.php
 /storage/framework/sessions
+.idea/workspace.xml
