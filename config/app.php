@@ -121,7 +121,7 @@ return [
     |
     */
 
-    'providers' => [
+    'providers' => array(
 
         /*
          * Laravel Framework Service Providers...
@@ -146,6 +146,8 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
+        Ckeditor\Ckeditor\ServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
         /*
@@ -156,7 +158,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-    ],
+    ),
 
     /*
     |--------------------------------------------------------------------------
