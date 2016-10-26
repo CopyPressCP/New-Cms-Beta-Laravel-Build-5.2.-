@@ -9,7 +9,7 @@ class User extends Authenticatable
     protected $primaryKey = 'user_id';
 
     public function roles(){
-        return $this->belongsTo('App\Role','role_id','role_id');
+        return $this->belongsToMany('App\Role','user_roles','user_id','role_id');
     }
 
     public function clients(){
@@ -17,7 +17,7 @@ class User extends Authenticatable
     }
 
     public function campaigns(){
-        return $this->belongsToMany('App\Campaign','campaign_id','campaign_id');
+        return $this->belongsToMany('App\Campaign','campaign_users','user_id','campaign_id');
     }
     /**
      * The attributes that are mass assignable.

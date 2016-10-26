@@ -9,7 +9,7 @@ class Role extends Model
     protected $primaryKey = 'role_id';
 
     public function users(){
-        return $this->belongsToMany('App\User','user_id','user_id');
+        return $this->belongsToMany('App\User','user_roles','role_id','user_id');
     }
 
 }

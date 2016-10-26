@@ -16,4 +16,7 @@ class Campaign extends Model
         return $this->hasMany('App\Article');
     }
 
+    public function users(){
+        return $this->belongsToMany('App\User','campaign_users','campaign_id','user_id');
+    }
 }
